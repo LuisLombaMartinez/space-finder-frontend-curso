@@ -8,7 +8,7 @@ import { Home } from './Home';
 import history from '../utils/history';
 import { Profile } from './Profile';
 
-interface AppState{
+interface AppState {
   user: User | undefined
 }
 
@@ -16,7 +16,7 @@ export class App extends React.Component<{}, AppState> {
 
   private authService: AuthService = new AuthService();
 
-  constructor(props: any){
+  constructor(props: any) {
     super(props);
     this.state = {
       user: undefined
@@ -33,17 +33,19 @@ export class App extends React.Component<{}, AppState> {
 
   render() {
     return (
-      
+
       <div className='wrapper'>
         <Router history={history}>
           <div>
-            <Navbar user = {this.state.user}/>
+            <Navbar user={this.state.user} />
             <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route exact path = '/login'>
-                <Login authService = {this.authService} setUser = {this.setUser}/>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login'>
+                <Login authService={this.authService} setUser={this.setUser} />
               </Route>
-              <Route exact path='/profile' component={Profile}/>
+              <Route exact path='/profile'>
+                <Profile authService={this.authService} user={this.state.user} />
+              </Route>
             </Switch>
           </div>
         </Router>
