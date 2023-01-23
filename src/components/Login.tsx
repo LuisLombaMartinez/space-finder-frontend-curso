@@ -63,15 +63,6 @@ export class Login extends React.Component<LoginProps, LoginState> {
     }
 
     render() {
-        let loginMessage: any;
-
-        if (this.state.loginAttempted){
-            if (this.state.loginSuccesful) {
-                loginMessage = <label>Login successful</label>
-            } else {
-                loginMessage = <label>Login failed</label>
-            }
-        }
 
         return (
             <div>
@@ -88,7 +79,6 @@ export class Login extends React.Component<LoginProps, LoginState> {
 
                     <input type='submit' value='Login' />
                 </form>
-                {loginMessage}
             </div>
         )
     }
